@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZWDC+jeItkaiQl/v5RuKnCA8kaapWzoTfnsRrzqvsWwfJi2MW7h5bKemRfB4z6zDFfGgKawEuuSAcjAL6I+ocA==",
+  "success": true,
+  "projectFilePath": "D:\\Grand Circus\\Grand Circus Docs\\NET Core\\RedditAPILab\\RedditAPILab\\RedditAPILab.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tacol\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

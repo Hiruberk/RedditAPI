@@ -1,0 +1,36 @@
+﻿@model List<Child>
+
+<h2>Posts from r/@TempData["sub"]</h2>
+
+@for (int i = 2; i < 12; i++)
+{
+    
+    string permalink = "https://www.reddit.com" + Model[i].data.permalink;
+    <h4>@(i-1): <a href="@permalink">@Model[i].data.title</a></h4>
+    <p>@Model[i].data.selftext</p>
+    @if (Model[i].data.thumbnail != "self")
+    {
+        @if (Model[i].data.is_video)
+        {
+            <video width="320" height="240" controls="controls" src="@Model[i].data.media.reddit_video.fallback_url">
+                Your browser does not support the HTML5 Video element.
+            </video>
+            <br />
+        }
+        else if (Model[i].data.url.EndsWith(".html"))
+        {
+
+        }
+        else
+        {
+            <a href="@Model[i].data.url" target="_blank">
+                <img src="@Model[i].data.thumbnail" style="max-width:100%;" alt="@Model[i].data.title">
+            </a>
+        }
+    }
+    <p>Number of Upvotes: @Model[i].data.ups</p>
+    <br />
+
+
+
+}
