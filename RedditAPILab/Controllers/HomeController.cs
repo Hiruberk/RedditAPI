@@ -34,10 +34,20 @@ namespace RedditAPILab.Controllers
         {
             TempData["sub"] = subreddit;
 
-            SubRedditRoot srr = rdd.ConvertToSubReddit(subreddit);
+            SubRedditRoot srr = rdd.GetPosts(subreddit);
             
             Child[] childrens = srr.data.children;
             List<Child> c = childrens.ToList();
+            if(c.Count == 1)
+            {
+                Child ch = c[0];
+                TempData["error"] = subreddit + " does not exist. Please try again.";
+            }
+            if(c.Count == 0)
+            {
+                TempData["error"] = subreddit +" does not exist. Please try again.";
+                return RedirectToAction("Index");
+            }
 
             return View(c);
         }

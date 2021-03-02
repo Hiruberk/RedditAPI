@@ -1,4 +1,8 @@
 ﻿@model List<Child>
+@if(TempData.Peek("error") != null)
+{
+    <h2>@TempData.Peek("error")</h2>
+}
 
 <h2>Posts from r/@TempData["sub"]</h2>
 
@@ -29,6 +33,7 @@
         }
     }
     <p>Number of Upvotes: @Model[i].data.ups</p>
+    <p>Author: @Model[i].data.author</p>
     <hr />
 
 

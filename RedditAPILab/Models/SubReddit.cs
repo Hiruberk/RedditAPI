@@ -10,6 +10,8 @@ namespace RedditAPILab.Models
 
     public class SubRedditRoot
     {
+        public bool Error { get; set; } = false;
+        public string ErrorMessage { get; set; }
         public string kind { get; set; }
         public Data data { get; set; }
     }
