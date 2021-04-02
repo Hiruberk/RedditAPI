@@ -25,17 +25,23 @@ namespace RedditAPILab.Controllers
             return View();
         }
 
-        //public IActionResult Error(string message)
-        //{
-        //    return View(message);
-        //}
+        public IActionResult Error(string message)
+        {
+            return View(message);
+        }
 
         public IActionResult TopTen(string subreddit)
         {
             TempData["sub"] = subreddit;
 
             SubRedditRoot srr = rdd.GetPosts(subreddit);
-            
+
+            if (srr.Error)
+            {
+                TempData["error"] = "When trying, the subreddit:" + subreddit + " something went horribly wrong";
+                return RedirectToAction("Index");
+            }
+
             Child[] childrens = srr.data.children;
             List<Child> c = childrens.ToList();
             if(c.Count == 1)

@@ -41,7 +41,7 @@ namespace RedditAPILab.Models
         public SubRedditRoot GetPosts(string sub)
         {
             string subRedditData = GetData(sub);
-            if (subRedditData.Contains("Error:"))
+            if (subRedditData.Contains("Error:") || String.IsNullOrEmpty(subRedditData))
             {
                 SubRedditRoot error = new SubRedditRoot();
                 error.Error = true;
@@ -51,7 +51,18 @@ namespace RedditAPILab.Models
             else
             {
                 SubRedditRoot s = new SubRedditRoot();
-                s = JsonConvert.DeserializeObject<SubRedditRoot>(subRedditData);
+                try
+                {
+                    s = JsonConvert.DeserializeObject<SubRedditRoot>(subRedditData);
+                }
+                catch(Exception f)
+                {
+                    SubRedditRoot error = new SubRedditRoot();
+                    error.Error = true;
+                    error.ErrorMessage = f.Message;
+                    return error;
+                }
+                
                 return s;
             }
         }
