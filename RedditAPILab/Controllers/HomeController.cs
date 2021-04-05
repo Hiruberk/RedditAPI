@@ -38,7 +38,7 @@ namespace RedditAPILab.Controllers
 
             if (srr.Error)
             {
-                TempData["error"] = "When trying, the subreddit:" + subreddit + " something went horribly wrong";
+                TempData["error"] = "When trying, the subreddit: " + subreddit + " something went horribly wrong";
                 return RedirectToAction("Index");
             }
 
